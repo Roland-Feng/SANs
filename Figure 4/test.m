@@ -1,5 +1,5 @@
 %normal approximating exponential
-function [flag,loss,Model,f_Output,rate] = test_01(net,SANN)
+function [flag,loss,Model,f_Output,rate] = test(net,SANN)
 global norm_type
 norm_type = 2;
 sampleNo = 4;
@@ -59,7 +59,7 @@ end
 %% Learning
 for i = 1:SANN
     fprintf('### SAN No. %d\n', i)
-    [flag(i),loss{i},Model{i},f_Output{i}] = randNN_01(N,label,Maxiter,net,errorThreshold,delta,lr,0,[]);
+    [flag(i),loss{i},Model{i},f_Output{i}] = SANs(N,label,Maxiter,net,errorThreshold,delta,lr,0,[]);
 end
 
 

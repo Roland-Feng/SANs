@@ -1,5 +1,5 @@
 % SAN code
-function [flag,loss,Model,f_temp] = randNN_01(N,label,Niter,net,errorThreshold,delta,lr,fig,Model)
+function [flag,loss,Model,f_temp] = SANs(N,label,Niter,net,errorThreshold,delta,lr,fig,Model)
 % close all;
 %% Learing parameterss
 % errorThreshold = 0.02;
@@ -70,8 +70,8 @@ i_last = 0;
 for i = 1:Niter
     f = funOutput(type,net,funAct,funSoft,W,B,C,D,L,data,M);
     [~,f_error] = funError(type, f, label);
-%     if mod(i,5) == 0, fprintf('### Step %d, layer = %d, lr = %.3e, delta = %.3e, error = %.3e.\n',...
-%             i, which_layer, studyRate, delta_der, f_error);end
+    if mod(i,5) == 0, fprintf('### Step %d, layer = %d, lr = %.3e, delta = %.3e, error = %.3e.\n',...
+            i, which_layer, studyRate, delta_der, f_error);end
     loss(i) = f_error; f_temp = f;
     delta_der = delta.start*delta.rate^(i/delta.Step);
     studyRate = lr.start*lr.rate^(i/lr.Step);
@@ -158,9 +158,9 @@ Model.B = B;
 Model.C = C;
 Model.D = D;
 
-% save label.mat label;
-% save fOutput.mat f_temp;
-% save loss.mat loss;
+save label.mat label;
+save fOutput.mat f_temp;
+save loss.mat loss;
 % fprintf('Total Iteration NO. : %d with error %.3e.\n', i, f_error);
 loss = loss(1:i);
 if fig == 1

@@ -61,4 +61,4 @@ lr.rate = 0.9;
 lr.Step = 100;
 
 %% Learning
-[flag,loss,Model,f_Output] = randNN_01(N,label,Maxiter,net,errorThreshold,delta,lr,1,[]);
+[flag,loss,Model,f_Output] = SANs(N,label,Maxiter,net,errorThreshold,delta,lr,1,[]);

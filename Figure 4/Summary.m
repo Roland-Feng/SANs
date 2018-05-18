@@ -10,7 +10,7 @@ N = 20;
 for j=1:length(net)
     for k=1:length(net{j})
         fprintf('### The net is %d  %d\n', j,k);
-        [flag{j,k},loss{j,k},Model{j,k},f_Output{j,k},rate{j,k}] = test_01(net{j}{k},N);
+        [flag{j,k},loss{j,k},Model{j,k},f_Output{j,k},rate{j,k}] = test(net{j}{k},N);
     end
 end
 save results;
